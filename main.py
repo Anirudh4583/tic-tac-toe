@@ -28,6 +28,7 @@ def play(agent):
 
 agent = QAgent()
 print("Started Learning")
+# change the number of episodes to learn
 agent.train(times=20000)
 print("Finished Learning")
 

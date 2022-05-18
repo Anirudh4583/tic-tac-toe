@@ -2,7 +2,7 @@
 
 ## Abstract
 
-A self playing Tic-Tac-Toe Game that never loses. The playing agent will look at all the possible moves and then, predict and play the best one. In worst case, the match could only be ended in draw.
+A self playing Tic-Tac-Toe Game that never loses. The playing agent will look at all the possible moves and then, predict and play the best one. Upon sufficient training , even in the worst case, the match could only be ended in a draw.
 
 ## References
 

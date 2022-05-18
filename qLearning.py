@@ -36,6 +36,7 @@ class QAgent:
 
     # function to get the best move
     def get_action(self, state, valid_actions):
+        # if random number is less than epsilon, then choose a random action
         best_move = self.q.get_best_move(state)
         if rd.random() < self.epsilon or best_move is None:
             return rd.choice(valid_actions)
@@ -50,19 +51,23 @@ class QAgent:
             winner = game.play(*action)
 
             # win
+            # reward of 100 for winning the game
             if winner or game.is_over():
                 self.q.next(action, 100, state, game.get_grid())
                 break
 
             # lose
+            # penalty of 100 for losing the game
             winner = game.play(*rd.choice(game.get_actions()))
             if winner or game.is_over():
                 self.q.next(action, -100, state, game.get_grid())
                 break
             # draw
+            # reward of 0 for drawing the game
             self.q.next(action, 0, state, game.get_grid())
 
     def train(self, times):
         for _ in range(times):
             self.learn()
+            # decrese the value of epsilon in every iteration
             self.epsilon -= 0.0001
